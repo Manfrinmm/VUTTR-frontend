@@ -32,6 +32,12 @@ const AuthProvider: React.FC = ({ children }) => {
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
+      api.get("/tools").catch(() => {
+        localStorage.removeItem("@vuttr:token");
+        localStorage.removeItem("@vuttr:user");
+
+        return {} as IAuthData;
+      });
 
       return { user: JSON.parse(user) };
     }

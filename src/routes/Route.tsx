@@ -25,7 +25,7 @@ export default function Route({ isPrivate, ...rest }: RouteProps) {
 
   return (
     <DefaultLayout>
-      <Header />
+      {user && <Header />}
       <ReactDOMRouter {...rest} />
     </DefaultLayout>
   );
